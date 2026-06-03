@@ -1,0 +1,406 @@
+2026-06-03 11:20:32,820 - agent - INFO - logger_handler.py:56 - 信息日志
+2026-06-03 11:20:32,820 - agent - ERROR - logger_handler.py:57 - 错误日志
+2026-06-03 11:20:32,820 - agent - WARNING - logger_handler.py:58 - 警告日志
+2026-06-03 11:20:32,820 - agent - DEBUG - logger_handler.py:59 - 调试日志
+2026-06-03 12:55:48,102 - agent - ERROR - vector_store.py:99 - [加载知识库]C:\Users\Astro\PycharmProjects\-agent-\data\扫地机器人100问.pdf加载失败：HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:997)'))))
+urllib3.exceptions.SSLError: TLS/SSL connection has been closed (EOF) (_ssl.c:997)
+
+The above exception was the direct cause of the following exception:
+
+urllib3.exceptions.ProxyError: ('Unable to connect to proxy', SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:997)')))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\urllib3\util\retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:997)'))))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Astro\PycharmProjects\-agent-\rag\vector_store.py", line 91, in load_document
+    self.vector_store.add_documents(split_document)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_core\vectorstores\base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_chroma\vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_community\embeddings\dashscope.py", line 155, in embed_documents
+    embeddings = embed_with_retry(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_community\embeddings\dashscope.py", line 83, in embed_with_retry
+    return _embed_with_retry(**kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 331, in wrapped_f
+    return copy(f, *args, **kw)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+  File "D:\software\Anaconda\envs\agent\lib\concurrent\futures\_base.py", line 439, in result
+    return self.__get_result()
+  File "D:\software\Anaconda\envs\agent\lib\concurrent\futures\_base.py", line 391, in __get_result
+    raise self._exception
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_community\embeddings\dashscope.py", line 66, in _embed_with_retry
+    resp = embeddings.client.call(**kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\embeddings\text_embedding.py", line 52, in call
+    return super().call(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\client\base_api.py", line 515, in call
+    return request.call()
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\api_entities\http_request.py", line 143, in call
+    output = next(response)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\api_entities\http_request.py", line 501, in _handle_request
+    raise e
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\api_entities\http_request.py", line 475, in _handle_request
+    response = session.post(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\sessions.py", line 712, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\adapters.py", line 723, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:997)'))))
+2026-06-03 12:55:48,146 - agent - ERROR - vector_store.py:99 - [加载知识库]C:\Users\Astro\PycharmProjects\-agent-\data\扫地机器人100问2.txt加载失败：HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:997)'))))
+urllib3.exceptions.SSLError: TLS/SSL connection has been closed (EOF) (_ssl.c:997)
+
+The above exception was the direct cause of the following exception:
+
+urllib3.exceptions.ProxyError: ('Unable to connect to proxy', SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:997)')))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\urllib3\util\retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:997)'))))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Astro\PycharmProjects\-agent-\rag\vector_store.py", line 91, in load_document
+    self.vector_store.add_documents(split_document)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_core\vectorstores\base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_chroma\vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_community\embeddings\dashscope.py", line 155, in embed_documents
+    embeddings = embed_with_retry(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_community\embeddings\dashscope.py", line 83, in embed_with_retry
+    return _embed_with_retry(**kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 331, in wrapped_f
+    return copy(f, *args, **kw)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+  File "D:\software\Anaconda\envs\agent\lib\concurrent\futures\_base.py", line 439, in result
+    return self.__get_result()
+  File "D:\software\Anaconda\envs\agent\lib\concurrent\futures\_base.py", line 391, in __get_result
+    raise self._exception
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_community\embeddings\dashscope.py", line 66, in _embed_with_retry
+    resp = embeddings.client.call(**kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\embeddings\text_embedding.py", line 52, in call
+    return super().call(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\client\base_api.py", line 515, in call
+    return request.call()
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\api_entities\http_request.py", line 143, in call
+    output = next(response)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\api_entities\http_request.py", line 501, in _handle_request
+    raise e
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\api_entities\http_request.py", line 475, in _handle_request
+    response = session.post(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\sessions.py", line 712, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\adapters.py", line 723, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:997)'))))
+2026-06-03 12:55:48,177 - agent - ERROR - vector_store.py:99 - [加载知识库]C:\Users\Astro\PycharmProjects\-agent-\data\扫拖一体机器人100问.txt加载失败：HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:997)'))))
+urllib3.exceptions.SSLError: TLS/SSL connection has been closed (EOF) (_ssl.c:997)
+
+The above exception was the direct cause of the following exception:
+
+urllib3.exceptions.ProxyError: ('Unable to connect to proxy', SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:997)')))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\urllib3\util\retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:997)'))))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Astro\PycharmProjects\-agent-\rag\vector_store.py", line 91, in load_document
+    self.vector_store.add_documents(split_document)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_core\vectorstores\base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_chroma\vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_community\embeddings\dashscope.py", line 155, in embed_documents
+    embeddings = embed_with_retry(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_community\embeddings\dashscope.py", line 83, in embed_with_retry
+    return _embed_with_retry(**kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 331, in wrapped_f
+    return copy(f, *args, **kw)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+  File "D:\software\Anaconda\envs\agent\lib\concurrent\futures\_base.py", line 439, in result
+    return self.__get_result()
+  File "D:\software\Anaconda\envs\agent\lib\concurrent\futures\_base.py", line 391, in __get_result
+    raise self._exception
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_community\embeddings\dashscope.py", line 66, in _embed_with_retry
+    resp = embeddings.client.call(**kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\embeddings\text_embedding.py", line 52, in call
+    return super().call(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\client\base_api.py", line 515, in call
+    return request.call()
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\api_entities\http_request.py", line 143, in call
+    output = next(response)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\api_entities\http_request.py", line 501, in _handle_request
+    raise e
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\api_entities\http_request.py", line 475, in _handle_request
+    response = session.post(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\sessions.py", line 712, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\adapters.py", line 723, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:997)'))))
+2026-06-03 12:55:48,207 - agent - ERROR - vector_store.py:99 - [加载知识库]C:\Users\Astro\PycharmProjects\-agent-\data\故障排除.txt加载失败：HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:997)'))))
+urllib3.exceptions.SSLError: TLS/SSL connection has been closed (EOF) (_ssl.c:997)
+
+The above exception was the direct cause of the following exception:
+
+urllib3.exceptions.ProxyError: ('Unable to connect to proxy', SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:997)')))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\urllib3\util\retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:997)'))))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Astro\PycharmProjects\-agent-\rag\vector_store.py", line 91, in load_document
+    self.vector_store.add_documents(split_document)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_core\vectorstores\base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_chroma\vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_community\embeddings\dashscope.py", line 155, in embed_documents
+    embeddings = embed_with_retry(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_community\embeddings\dashscope.py", line 83, in embed_with_retry
+    return _embed_with_retry(**kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 331, in wrapped_f
+    return copy(f, *args, **kw)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+  File "D:\software\Anaconda\envs\agent\lib\concurrent\futures\_base.py", line 439, in result
+    return self.__get_result()
+  File "D:\software\Anaconda\envs\agent\lib\concurrent\futures\_base.py", line 391, in __get_result
+    raise self._exception
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_community\embeddings\dashscope.py", line 66, in _embed_with_retry
+    resp = embeddings.client.call(**kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\embeddings\text_embedding.py", line 52, in call
+    return super().call(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\client\base_api.py", line 515, in call
+    return request.call()
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\api_entities\http_request.py", line 143, in call
+    output = next(response)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\api_entities\http_request.py", line 501, in _handle_request
+    raise e
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\api_entities\http_request.py", line 475, in _handle_request
+    response = session.post(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\sessions.py", line 712, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\adapters.py", line 723, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:997)'))))
+2026-06-03 12:55:48,240 - agent - ERROR - vector_store.py:99 - [加载知识库]C:\Users\Astro\PycharmProjects\-agent-\data\维护保养.txt加载失败：HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:997)'))))
+urllib3.exceptions.SSLError: TLS/SSL connection has been closed (EOF) (_ssl.c:997)
+
+The above exception was the direct cause of the following exception:
+
+urllib3.exceptions.ProxyError: ('Unable to connect to proxy', SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:997)')))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\urllib3\util\retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:997)'))))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Astro\PycharmProjects\-agent-\rag\vector_store.py", line 91, in load_document
+    self.vector_store.add_documents(split_document)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_core\vectorstores\base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_chroma\vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_community\embeddings\dashscope.py", line 155, in embed_documents
+    embeddings = embed_with_retry(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_community\embeddings\dashscope.py", line 83, in embed_with_retry
+    return _embed_with_retry(**kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 331, in wrapped_f
+    return copy(f, *args, **kw)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+  File "D:\software\Anaconda\envs\agent\lib\concurrent\futures\_base.py", line 439, in result
+    return self.__get_result()
+  File "D:\software\Anaconda\envs\agent\lib\concurrent\futures\_base.py", line 391, in __get_result
+    raise self._exception
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_community\embeddings\dashscope.py", line 66, in _embed_with_retry
+    resp = embeddings.client.call(**kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\embeddings\text_embedding.py", line 52, in call
+    return super().call(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\client\base_api.py", line 515, in call
+    return request.call()
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\api_entities\http_request.py", line 143, in call
+    output = next(response)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\api_entities\http_request.py", line 501, in _handle_request
+    raise e
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\api_entities\http_request.py", line 475, in _handle_request
+    response = session.post(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\sessions.py", line 712, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\adapters.py", line 723, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:997)'))))
+2026-06-03 12:55:48,269 - agent - ERROR - vector_store.py:99 - [加载知识库]C:\Users\Astro\PycharmProjects\-agent-\data\选购指南.txt加载失败：HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:997)'))))
+urllib3.exceptions.SSLError: TLS/SSL connection has been closed (EOF) (_ssl.c:997)
+
+The above exception was the direct cause of the following exception:
+
+urllib3.exceptions.ProxyError: ('Unable to connect to proxy', SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:997)')))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\urllib3\util\retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:997)'))))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Astro\PycharmProjects\-agent-\rag\vector_store.py", line 91, in load_document
+    self.vector_store.add_documents(split_document)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_core\vectorstores\base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_chroma\vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_community\embeddings\dashscope.py", line 155, in embed_documents
+    embeddings = embed_with_retry(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_community\embeddings\dashscope.py", line 83, in embed_with_retry
+    return _embed_with_retry(**kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 331, in wrapped_f
+    return copy(f, *args, **kw)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+  File "D:\software\Anaconda\envs\agent\lib\concurrent\futures\_base.py", line 439, in result
+    return self.__get_result()
+  File "D:\software\Anaconda\envs\agent\lib\concurrent\futures\_base.py", line 391, in __get_result
+    raise self._exception
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\tenacity\__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\langchain_community\embeddings\dashscope.py", line 66, in _embed_with_retry
+    resp = embeddings.client.call(**kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\embeddings\text_embedding.py", line 52, in call
+    return super().call(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\client\base_api.py", line 515, in call
+    return request.call()
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\api_entities\http_request.py", line 143, in call
+    output = next(response)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\api_entities\http_request.py", line 501, in _handle_request
+    raise e
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\dashscope\api_entities\http_request.py", line 475, in _handle_request
+    response = session.post(
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\sessions.py", line 712, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\software\Anaconda\envs\agent\lib\site-packages\requests\adapters.py", line 723, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:997)'))))
+2026-06-03 12:56:26,246 - agent - INFO - vector_store.py:96 - [加载知识库]C:\Users\Astro\PycharmProjects\-agent-\data\扫地机器人100问.pdf 内容加载成功
+2026-06-03 12:56:29,246 - agent - INFO - vector_store.py:96 - [加载知识库]C:\Users\Astro\PycharmProjects\-agent-\data\扫地机器人100问2.txt 内容加载成功
+2026-06-03 12:56:32,976 - agent - INFO - vector_store.py:96 - [加载知识库]C:\Users\Astro\PycharmProjects\-agent-\data\扫拖一体机器人100问.txt 内容加载成功
+2026-06-03 12:56:39,662 - agent - INFO - vector_store.py:96 - [加载知识库]C:\Users\Astro\PycharmProjects\-agent-\data\故障排除.txt 内容加载成功
+2026-06-03 12:56:43,603 - agent - INFO - vector_store.py:96 - [加载知识库]C:\Users\Astro\PycharmProjects\-agent-\data\维护保养.txt 内容加载成功
+2026-06-03 12:56:47,109 - agent - INFO - vector_store.py:96 - [加载知识库]C:\Users\Astro\PycharmProjects\-agent-\data\选购指南.txt 内容加载成功
