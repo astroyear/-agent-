@@ -404,3 +404,42 @@ requests.exceptions.ProxyError: HTTPSConnectionPool(host='dashscope.aliyuncs.com
 2026-06-03 12:56:39,662 - agent - INFO - vector_store.py:96 - [加载知识库]C:\Users\Astro\PycharmProjects\-agent-\data\故障排除.txt 内容加载成功
 2026-06-03 12:56:43,603 - agent - INFO - vector_store.py:96 - [加载知识库]C:\Users\Astro\PycharmProjects\-agent-\data\维护保养.txt 内容加载成功
 2026-06-03 12:56:47,109 - agent - INFO - vector_store.py:96 - [加载知识库]C:\Users\Astro\PycharmProjects\-agent-\data\选购指南.txt 内容加载成功
+2026-06-03 18:41:25,252 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-06-03 18:41:25,252 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 给我生成我的使用报告
+2026-06-03 18:41:33,682 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-06-03 18:41:33,682 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 给我生成我的使用报告
+2026-06-03 18:41:35,796 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：fill_context_for_report
+2026-06-03 18:41:35,796 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-06-03 18:41:35,798 - agent - INFO - middleware.py:24 - [tool monitor]工具fill_context_for_report调用成功
+2026-06-03 18:41:35,801 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-06-03 18:41:35,801 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | fill_context_for_report已调用
+2026-06-03 18:41:37,470 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_id
+2026-06-03 18:41:37,470 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-06-03 18:41:37,472 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_id调用成功
+2026-06-03 18:41:37,475 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有5条消息。
+2026-06-03 18:41:37,475 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 1006
+2026-06-03 18:41:38,585 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_current_month
+2026-06-03 18:41:38,585 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-06-03 18:41:38,586 - agent - INFO - middleware.py:24 - [tool monitor]工具get_current_month调用成功
+2026-06-03 18:41:38,589 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有7条消息。
+2026-06-03 18:41:38,589 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 2025-09
+2026-06-03 18:41:42,606 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：fetch_external_data
+2026-06-03 18:41:42,607 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'user_id': '1006', 'month': '2025-09'}
+2026-06-03 18:41:42,612 - agent - INFO - middleware.py:24 - [tool monitor]工具fetch_external_data调用成功
+2026-06-03 18:41:42,614 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有9条消息。
+2026-06-03 18:41:42,615 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | {"特征": "150㎡别墅 | 儿童 | 多层", "效率": "跨楼层失败:3次/周\\n玩具避障率:75%", "耗材": "边刷寿命:剩余60天\\n集尘袋消耗:1.2个/月", "对比": "跨楼层导航优化中+清洁效率小幅回升"}
+2026-06-03 18:41:45,692 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：rag_summarize
+2026-06-03 18:41:45,693 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'query': '多层别墅扫地机器人使用建议 跨楼层导航'}
+2026-06-03 18:41:49,412 - agent - INFO - middleware.py:24 - [tool monitor]工具rag_summarize调用成功
+2026-06-03 18:41:49,416 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有11条消息。
+2026-06-03 18:41:49,416 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 多层别墅使用扫地机器人时，需选择支持多楼层地图记忆和跨楼层导航功能的型号；部分高端机型可通过激光或视觉导航自动识别不同楼层，并分别保存各层地图；用户应确保楼梯口有物理阻挡以防跌落，并在切换楼层后手动启动对应楼层的地图进行清扫。
+2026-06-03 18:41:51,087 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：rag_summarize
+2026-06-03 18:41:51,088 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'query': '扫地机器人避障玩具 儿童家庭使用建议'}
+2026-06-03 18:41:52,671 - agent - INFO - middleware.py:24 - [tool monitor]工具rag_summarize调用成功
+2026-06-03 18:41:52,674 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有13条消息。
+2026-06-03 18:41:52,675 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 参考资料中未提及扫地机器人避障玩具相关内容，无法提供儿童家庭使用建议。
+2026-06-03 18:41:54,912 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：rag_summarize
+2026-06-03 18:41:54,913 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'query': '扫地机器人耗材更换周期 边刷 集尘袋'}
+2026-06-03 18:41:56,788 - agent - INFO - middleware.py:24 - [tool monitor]工具rag_summarize调用成功
+2026-06-03 18:41:56,791 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有15条消息。
+2026-06-03 18:41:56,791 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 边刷建议每3-6个月更换一次，集尘袋根据使用频率和灰尘量一般每1-3个月更换一次。
